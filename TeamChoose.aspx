@@ -133,91 +133,98 @@
 
                 </div>
 
+                <div style="float:left;margin-left:35px">
 
-                <div style="float: left; margin-left: 35px">
-                    <h3 id="GAHead" runat="server"></h3>
+                    <div style="float:left">
+                        <h3 id="GAHead" runat="server"></h3>
 
-                    <asp:GridView ID="GVA" runat="server"
-                        AutoGenerateColumns="False" ShowFooter="true"
-                        DataKeyNames="ID"
-                        OnRowDataBound="GVA_RowDataBound"
-                        CssClass="table table-striped-columns">
-                        <Columns>
-                            <asp:BoundField DataField="RateType" HeaderText="" />
-                            <asp:TemplateField HeaderText="Price">
-                                <ItemTemplate>
-                                    <div style="text-align: right">
-                                        <asp:Label ID="Price" runat="server"
-                                            Text='<%# Eval("Rate", "{0:c2}") %>'></asp:Label>
-                                    </div>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField>
-                                <ItemTemplate>
-                                    <asp:Label ID="SelCount" runat="server"
-                                        Text='<%# Eval("SelCount") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Total">
-                                <ItemTemplate>
-                                    <div style="text-align: right">
-                                        <asp:Label ID="SelTotal" runat="server"
-                                            Text='<%# Eval("SelTotal", "{0:c2}") %>'></asp:Label>
-                                    </div>
-                                </ItemTemplate>
-                                <FooterTemplate>
-                                    <div style="text-align: right">
-                                        <asp:Label ID="SelTotalSum" runat="server"></asp:Label>
-                                    </div>
-                                </FooterTemplate>
+                        <asp:GridView ID="GVA" runat="server"
+                            AutoGenerateColumns="False" ShowFooter="true"
+                            DataKeyNames="ID"
+                            OnRowDataBound="GVA_RowDataBound"
+                            CssClass="table table-striped-columns">
+                            <Columns>
+                                <asp:BoundField DataField="RateType" HeaderText="" />
+                                <asp:TemplateField HeaderText="Price">
+                                    <ItemTemplate>
+                                        <div style="text-align: right">
+                                            <asp:Label ID="Price" runat="server"
+                                                Text='<%# Eval("Rate", "{0:c2}") %>'></asp:Label>
+                                        </div>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                        <asp:Label ID="SelCount" runat="server"
+                                            Text='<%# Eval("SelCount") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Total">
+                                    <ItemTemplate>
+                                        <div style="text-align: right">
+                                            <asp:Label ID="SelTotal" runat="server"
+                                                Text='<%# Eval("SelTotal", "{0:c2}") %>'></asp:Label>
+                                        </div>
+                                    </ItemTemplate>
+                                    <FooterTemplate>
+                                        <div style="text-align: right">
+                                            <asp:Label ID="SelTotalSum" runat="server"></asp:Label>
+                                        </div>
+                                    </FooterTemplate>
 
-                            </asp:TemplateField>
-                        </Columns>
-                    </asp:GridView>
+                                </asp:TemplateField>
+                            </Columns>
+                        </asp:GridView>
+                    </div>
+
+                    <div style="float: left; margin-left: 20px">
+                        <h3 id="GBHead" runat="server"></h3>
+
+                        <asp:GridView ID="GVB" runat="server"
+                            AutoGenerateColumns="False"
+                            DataKeyNames="ID"
+                            CssClass="table table-striped-columns" ShowFooter="True">
+                            <Columns>
+                                <asp:BoundField DataField="RateType" HeaderText="" />
+                                <asp:TemplateField HeaderText="Price">
+                                    <ItemTemplate>
+                                        <div style="text-align: right">
+                                            <asp:Label ID="Price" runat="server"
+                                                Text='<%# Eval("Rate", "{0:c2}") %>'></asp:Label>
+                                        </div>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                        <asp:Label ID="SelCount" runat="server"
+                                            Text='<%# Eval("SelCount") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Total">
+                                    <ItemTemplate>
+                                        <div style="text-align: right">
+                                            <asp:Label ID="SelTotal" runat="server"
+                                                Text='<%# Eval("SelTotal", "{0:c2}") %>'></asp:Label>
+                                        </div>
+                                    </ItemTemplate>
+                                    <FooterTemplate>
+                                        <div style="text-align: right">
+                                            <asp:Label ID="SelTotalSum" runat="server"></asp:Label>
+                                        </div>
+                                    </FooterTemplate>
+                                </asp:TemplateField>
+
+                            </Columns>
+                        </asp:GridView>
+
+                    </div>
+
+                    <div style="clear:both"></div>
+                    <h4>Total Amount</h4>
+                    <asp:Label ID="lblTotal" runat="server" Text="Label">
+
+                    </asp:Label>
                 </div>
-
-                <div style="float: left; margin-left: 15px">
-                    <h3 id="GBHead" runat="server"></h3>
-
-                    <asp:GridView ID="GVB" runat="server"
-                        AutoGenerateColumns="False"
-                        DataKeyNames="ID"
-                        CssClass="table table-striped-columns" ShowFooter="True">
-                        <Columns>
-                            <asp:BoundField DataField="RateType" HeaderText="" />
-                            <asp:TemplateField HeaderText="Price">
-                                <ItemTemplate>
-                                    <div style="text-align: right">
-                                        <asp:Label ID="Price" runat="server"
-                                            Text='<%# Eval("Rate", "{0:c2}") %>'></asp:Label>
-                                    </div>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField>
-                                <ItemTemplate>
-                                    <asp:Label ID="SelCount" runat="server"
-                                        Text='<%# Eval("SelCount") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Total">
-                                <ItemTemplate>
-                                    <div style="text-align: right">
-                                        <asp:Label ID="SelTotal" runat="server"
-                                            Text='<%# Eval("SelTotal", "{0:c2}") %>'></asp:Label>
-                                    </div>
-                                </ItemTemplate>
-                                <FooterTemplate>
-                                    <div style="text-align: right">
-                                        <asp:Label ID="SelTotalSum" runat="server"></asp:Label>
-                                    </div>
-                                </FooterTemplate>
-                            </asp:TemplateField>
-
-                        </Columns>
-                    </asp:GridView>
-
-                </div>
-
             </ContentTemplate>
         </asp:UpdatePanel>
 

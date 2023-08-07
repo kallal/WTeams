@@ -1,4 +1,6 @@
-﻿Public Class TeamChoose
+﻿Imports System.Security.Cryptography
+
+Public Class TeamChoose
     Inherits System.Web.UI.Page
 
     Const sHeadings As String = "ABCDEFGHKL"
@@ -13,6 +15,8 @@
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
         If Not IsPostBack Then
+            Session("TeamATotal") = 0.0
+            Session("TeamBTotal") = 0.0
 
             Session("ScoreCard") = 1
             sCardID = Session("ScoreCard")
@@ -31,6 +35,10 @@
         Dim strSQL As String
         Dim cmdSQL As SqlCommand
 
+        Dim TeamATotal As Decimal = Session("TeamATotal")
+        Dim TeamBTotal As Decimal = Session("TeamBTotal")
+
+
         If A Then
             strSQL =
                 "SELECT *, (SelCount * Rate) as SelTotal FROM vChoices 
@@ -47,8 +55,9 @@
             GVA.DataSource = rstA
             GVA.DataBind()
             Dim lblSub As Label = GVA.FooterRow.FindControl("SelTotalSum")
-            lblSub.Text = String.Format("{0:c2}", rstA.Compute("Sum(SelTotal)", ""))
-
+            TeamATotal = rstA.Compute("Sum(SelTotal)", "")
+            Session("TeamATotal") = TeamATotal
+            lblSub.Text = String.Format("{0:c2}", TeamATotal)
 
         End If
 
@@ -68,8 +77,16 @@
             GVB.DataSource = rstB
             GVB.DataBind()
             Dim lblSub As Label = GVB.FooterRow.FindControl("SelTotalSum")
-            lblSub.Text = String.Format("{0:c2}", rstB.Compute("Sum(SelTotal)", ""))
+
+            TeamBTotal = rstB.Compute("Sum(SelTotal)", "")
+            Session("TeamBTotal") = TeamBTotal
+            lblSub.Text = String.Format("{0:c2}", TeamBTotal)
+
+            lblSub.Text = String.Format("{0:c2}", TeamBTotal, "")
         End If
+
+        ' Grand total
+        lblTotal.Text = String.Format("{0:c2}", TeamATotal + TeamBTotal)
 
 
     End Sub
