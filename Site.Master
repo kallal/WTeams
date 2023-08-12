@@ -21,9 +21,128 @@
     padding:20px !important;
 }
 </style>
+
+
+
+    <style>
+        body {
+            font-family: Arial;
+            font-size: 10pt;
+        }
+
+        .GridPager a, .GridPager span {
+            display: block;
+            height: 22px;
+            width: 28px;
+            text-align: center;
+            margin-right: 12px;
+            box-shadow: 4px 4px 4px 0px gray;
+            border-radius: 10px;
+        }
+
+        .GridPager a {
+            background-color: #ddd5d5;
+            border: 1px solid #969696;
+            margin-right: 12px;
+            box-shadow: 4px 4px 4px 0px gray;
+            border-radius: 10px;
+        }
+
+            .GridPager a:hover {
+                background-color: #789eca;
+                transition: 0.5s;
+            }
+
+        .GridPager span {
+            background-color: #808080;
+            color: #000;
+            border: 1px solid #3AC0F2;
+        }
+    </style>
+
+
+    <style>
+        .myshadow
+        {box-shadow: 8px 8px 8px 0px gray}
+        .myshadow {border-radius:10px}
+        .myshadow:hover {background-color:#789eca;transition: 0.5s;}
+        .myshadow {border:solid;border-color:lightgray;border-width:.1em}
+    </style>
+
+    <link href="/Fonts/font-awesome.css" rel="stylesheet" />
+
+       <style>
+     .dialogWithDropShadow
+     {
+         -webkit-box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);  
+         -moz-box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5); 
+         border-radius:20px;
+         
+     }
+     .dialogWithDropShadow
+       .ui-dialog-titlebar {
+           background: white;
+           border:none;
+           border-bottom: 1px solid #ccc;
+       }
+
+       .dialogWithDropShadow
+          .ui-dialog-titlebar-close {
+           display: none
+       }
+
+
+       .mybt2 
+       {
+            height: 32px;
+           background-color: #253B82;
+           color: white;
+           border-radius: 25px;
+           margin-left: 20px;
+       }
+   
+
+       .MyHideBtn {display:none}
+
+       .ui-dialog .ui-dialog-buttonpane button.ui-button .ui-icon {
+           background-image: url("/Scripts/Images/ui-icons_ffffff_256x240.png");
+       }
+    
+       .ui-dialog .ui-dialog-buttonpane button.ui-button .ui-icon:hover {
+           background-image: url("/Scripts/Images/ui-icons_cd0a0a_256x240.png");
+       }
+    
+
+
+
+       .ui-dialog .ui-dialog-buttonpane button.ui-button {
+           box-shadow: 8px 8px 8px 0px gray; 
+           border-radius: 25px;
+           height:34px;
+           border: 1px solid transparent;
+       }
+
+        .ui-dialog .ui-dialog-buttonpane button.ui-button:hover  {
+           box-shadow: 8px 8px 8px 0px gray; 
+           background-color: #789eca;transition: 0.5s;
+           color: black;
+           border-radius: 25px;
+           height:34px;
+           border: 1px solid transparent;           
+       }
+    </style>
+
+
 </head>
 <body>
     <form runat="server">
+
+
+        <%: Styles.Render("~/Scripts/jquery-ui2.min.css") %>
+        <%: Styles.Render("~/Scripts/jquery.toast.min.css") %>
+
+
+
         <asp:ScriptManager runat="server">
             <Scripts>
                 <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
@@ -40,7 +159,13 @@
                 <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
                 <asp:ScriptReference Name="WebFormsBundle" />
                 <%--Site Scripts--%>
+
+                <asp:ScriptReference Path="/Scripts/jquery-ui-1.13.2.min.js" runat="server"  />
+                <asp:ScriptReference Path="/Scripts/jquery.toast.min.js" runat="server" />
+
             </Scripts>
+
+
         </asp:ScriptManager>
 
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
@@ -52,20 +177,17 @@
                 </button>
                 <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/TeamChoose">ScoreCard</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Teams">Teams</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/ScoreCards">ScoreCards</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <div class="container body-content rm-margin" >
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
-        </div>
     </form>
     <asp:PlaceHolder runat="server">
-        <%: Scripts.Render("~/Scripts/bootstrap.js") %>
+        <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 </body>
 </html>

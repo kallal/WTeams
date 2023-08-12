@@ -14,7 +14,7 @@
                 Text="Button" Width="109px" />
             <br />
             <br />
-            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+            <asp:TextBox ID="TextBox1" runat="server" TextMode="Date"></asp:TextBox>
         </div>
     </form>
 </body>
