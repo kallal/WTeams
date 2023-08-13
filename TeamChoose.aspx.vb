@@ -61,11 +61,10 @@ Public Class TeamChoose
 
 
         If A Then
-            strSQL =
-                "SELECT *, (SelCount * Rate) as SelTotal FROM vChoices 
-                WHERE Team_ID = @TeamID 
-                AND (ScoreCardID is null OR ScoreCardID = @ScoreCardID)
-                ORDER BY RateType"
+            strSQL = "SELECT *, (SelCount * Rate) as SelTotal FROM vChoices " &
+                     "WHERE Team_ID = @TeamID " &
+                      "AND (ScoreCardID is null OR ScoreCardID = @ScoreCardID) " &
+                      "ORDER BY RateType"
 
             cmdSQL = New SqlCommand(strSQL)
             cmdSQL.Parameters.Add("@TeamID", SqlDbType.Int).Value = rstScoreCard.Rows(0)("TeamA")
@@ -84,14 +83,13 @@ Public Class TeamChoose
 
 
         If B Then
-            strSQL =
-                "SELECT *, (SelCount * Rate) as SelTotal FROM vChoices 
-                WHERE Team_ID = @TeamID 
-                AND (ScoreCardID is null OR ScoreCardID = @ScoreCardID)
-                ORDER BY RateType"
+            strSQL = "SELECT *, (SelCount * Rate) as SelTotal FROM vChoices " &
+                     "WHERE Team_ID = @TeamID " &
+                     "AND (ScoreCardID is null OR ScoreCardID = @ScoreCardID) " &
+                     "ORDER BY RateType"
 
             cmdSQL = New SqlCommand(strSQL)
-            cmdSQL.Parameters.Add("@TeamID", SqlDbType.Int).Value = rstScoreCard.Rows(0)("TeamA")
+            cmdSQL.Parameters.Add("@TeamID", SqlDbType.Int).Value = rstScoreCard.Rows(0)("TeamB")
             cmdSQL.Parameters.Add("@ScoreCardID", SqlDbType.Int).Value = sCardID
 
             Dim rstB As DataTable = MyRstP(cmdSQL)
@@ -141,15 +139,16 @@ Public Class TeamChoose
         rstScoreCard = MyRst($"SELECT * FROM vScoreCards WHERE ID = {sCardID}")
 
         Dim rstTeamA As New DataTable
+        Dim strSQL As String = ""
 
-        rstTeamA = MyRst($"select * from vCardChoices
-                         where TeamID = {rstScoreCard.Rows(0)("TeamA")} and ScoreCardID = {sCardID}")
-
+        strSQL = $"select * from vCardChoices where TeamID = {rstScoreCard.Rows(0)("TeamA")} " &
+                 $"AND ScoreCardID = {sCardID}"
+        rstTeamA = MyRst(strSQL)
 
         Dim rstTeamB As New DataTable
-
-        rstTeamB = MyRst($"select * from vCardChoices
-                           where TeamID = {rstScoreCard.Rows(0)("TeamB")} and ScoreCardID = {sCardID}")
+        strSQL = $"select * from vCardChoices where TeamID = {rstScoreCard.Rows(0)("TeamB")} " &
+                 $"AND ScoreCardID = {sCardID}"
+        rstTeamB = MyRst(strSQL)
 
 
         rstData.Columns.Add("ID", GetType(Integer))
@@ -174,7 +173,7 @@ Public Class TeamChoose
 
             ' get left side (TeamA) data
             For Each sHead In sHeadings
-                Dim sFilter As String = $"RowID = {iRow} AND RateType = '{sHead}'"
+                Dim sFilter As String = $"RowID = {iRow} And RateType = '{sHead}'"
                 If rstTeamA.Select(sFilter).Length > 0 Then
                     OneRow(sHead) = True
                 End If
@@ -223,6 +222,7 @@ Public Class TeamChoose
             uA = True
         Else
             TeamID = TeamBID
+            Debug.Print($"Team b click = {TeamID} ckColID = {ckColID}")
             sHead = sHeadings.Substring(ckColID - sHeadings.Length - 1, 1)
             uB = True
         End If
@@ -234,8 +234,8 @@ Public Class TeamChoose
                 MyRst($"SELECT id FROM TeamRates WHERE RateType = '{sHead}' AND Team_ID = {TeamID}")
 
 
-            Dim strSQL = "INSERT INTO CardChoices (ScoreCardID, TeamID, RowID, TeamRateID)
-                         VALUES (@CardID, @TeamID, @RowID, @TeamRateID)"
+            Dim strSQL = "INSERT INTO CardChoices (ScoreCardID, TeamID, RowID, TeamRateID) " &
+                         "VALUES (@CardID, @TeamID, @RowID, @TeamRateID)"
             Dim cmdSQL As New SqlCommand(strSQL)
             cmdSQL.Parameters.Add("@CardID", SqlDbType.Int).Value = sCardID
             cmdSQL.Parameters.Add("@TeamID", SqlDbType.Int).Value = TeamID
@@ -247,10 +247,9 @@ Public Class TeamChoose
         Else
             ' remove row from selected
             Dim strSQL As String =
-                "DELETE FROM CardChoices 
-                FROM CardChoices
-                JOIN TeamRates ON TeamRates.ID = CardChoices.TeamRateID
-                 WHERE RowID = @RowID AND ScoreCardID = @CardID And RateType = @RateType"
+                "DELETE FROM CardChoices FROM CardChoices " &
+                "JOIN TeamRates ON TeamRates.ID = CardChoices.TeamRateID " &
+                "WHERE RowID = @RowID AND ScoreCardID = @CardID And RateType = @RateType"
             Dim cmdSQL As New SqlCommand(strSQL)
             cmdSQL.Parameters.Add("@RowID", SqlDbType.Int).Value = RowID
             cmdSQL.Parameters.Add("@CardID", SqlDbType.Int).Value = sCardID

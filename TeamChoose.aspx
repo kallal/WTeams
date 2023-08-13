@@ -242,7 +242,7 @@
             </div>
             <div style="float:left;margin-left:35px">
                 <h3>Event Info</h3>
-                <asp:Label ID="lblInfo" runat="server" Font-Size="Larger"></asp:Label>
+                <asp:Label ID="lblInfo" runat="server" Font-Size="Larger" Width="350px"></asp:Label>
             </div>
 
         </div>

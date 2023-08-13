@@ -16,6 +16,7 @@
 
     Public HideCancel As Boolean = False
 
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
     End Sub
@@ -126,9 +127,17 @@
 
     Public Sub PopEdit(sButton As String)
 
-        Dim sJava As String = $"{Me.ID}ucPOP('{sButton}')"
-        ScriptManager.RegisterStartupScript(Page, Page.GetType, "uEdit", sJava, True)
+        Dim sJava As String = ""
 
+        If HideCancel Then
+            sJava = $"var HideCancel2 = '1'"
+        Else
+            sJava = $"var HideCancel2 = '0'"
+        End If
+        ScriptManager.RegisterStartupScript(Page, Page.GetType, "myvar", sJava, True)
+
+        sJava = $"{Me.ID}ucPOP('{sButton}')"
+        ScriptManager.RegisterStartupScript(Page, Page.GetType, "uEdit", sJava, True)
 
     End Sub
 
@@ -171,17 +180,17 @@
         Return Nothing
     End Function
 
-    Public Function CancelClass() As String
+    'Public Function CancelClass() As String
 
-        Dim sResult As String = ""
+    '    Dim sResult As String = ""
 
-        If HideCancel Then
-            sResult = "MyHideBtn"
-        End If
+    '    If HideCancel Then
+    '        sResult = "MyHideBtn"
+    '    End If
 
-        Return sResult
+    '    Return sResult
 
-    End Function
+    'End Function
 
 
 End Class

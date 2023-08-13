@@ -32,6 +32,7 @@
 
 
     <script>
+        HideCancel2 = "0"
 
         function <%= Me.ID %>ucPOP(Sbtn) {
             var btn = $('#' + Sbtn)
@@ -43,7 +44,16 @@
             var ucDismissable = <%= Me.Dissmissable %>
             var ucSaveBut = '#' + '<%= cmdSave.ClientID %>'
             var ucDeleteBut = '#' + '<%= cmdDelete.ClientID %>'
-            var ucCancelClass = '<%= Me.CancelClass %>'
+
+            var ucHide = '<%= Me.HideCancel %>'
+            var ucCancelClass = ""
+
+
+            if (HideCancel2 == "1") {
+                ucCancelClass = "MyHideBtn"
+            }
+
+
 
             var dPos = ""
             if (ucPos == 3) {
@@ -62,12 +72,10 @@
             myDialog.dialog({
                 autoOpen: false,
                 modal: true,
-                appendTo: "form",
                 position: dpos,
                 closeText: "",
                 title: ucTitle,
                 width: ucWidth,
-                appendTo:"form",
                 dialogClass: "dialogWithDropShadow",
                 buttons: [
                     {
@@ -90,9 +98,7 @@
                         id: ucCtrlID + "_MyDelete",
                         text: "Delete",
                         click: function () {
-
-                            // myDialog.dialog('close')
-                            mydeletec(this)
+                            mydeletec(this,myDialog)
 
                         }
                     }
@@ -134,8 +140,9 @@
 
         }
 
-        function mydeletec(btn) {
+        function mydeletec(btn, parentDialog) {
             var myDialog = $('#mydeldiv')
+            
             myDialog.dialog({
                 autoOpen: false,
                 modal: true,
@@ -143,7 +150,6 @@
                 closeText: "",
                 title: "Delete Record",
                 width: "300px",
-                appendTo: "form",
                 dialogClass: "dialogWithDropShadow",
                 buttons: [
                     {
@@ -151,6 +157,7 @@
                         text: "Delete",
                         click: function () {
                             myDialog.dialog('close')
+                            parentDialog.dialog('close')
                             var btnDel = $("#<%= cmdDelete.ClientID %>")
                             btnDel.click()
                         }

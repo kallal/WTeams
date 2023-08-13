@@ -17,6 +17,10 @@
         </div>
         <div style="clear:both"></div>
 
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
+
+
         <asp:GridView ID="GVTeams" 
             runat="server" AutoGenerateColumns="False" 
             CssClass="table table-hover"
@@ -119,8 +123,13 @@
             OnMySaveTrigger="MyEdit_MySaveTrigger"
             OnMyDeleteTrigger="MyEdit_MyDeleteTrigger"
             />
+
+                </ContentTemplate>
+            </asp:UpdatePanel>
+
     </div>
+ 
 
 
-
+    </div>
 </asp:Content>

@@ -45,13 +45,11 @@
             Dim TeamName As String = MyRst($"SELECT * FROM Teams WHERE ID = {TeamID}").Rows(0)("Team")
             Me.myhead.InnerText = $"Score Cards for {TeamName}"
 
-            strSQL = $"select * from vScoreCards 
-                      WHERE TeamA = {TeamID} OR TeamB = {TeamID}
-                      ORDER BY EventDate, TeamAT"
+            strSQL = $"select * from vScoreCards WHERE TeamA = {TeamID} OR TeamB = {TeamID} " &
+                      "ORDER BY EventDate, TeamAT"
 
         Else
-            strSQL = $"select * from vScoreCards 
-                      ORDER BY EventDate, TeamAT"
+            strSQL = $"select * from vScoreCards ORDER BY EventDate, TeamAT"
 
         End If
 
@@ -62,7 +60,7 @@
 
 
     Protected Sub cmdView_Click(sender As Object, e As EventArgs)
-
+        ' bad name - this is edit, not view!!!!
         Dim cmdBtn As LinkButton = sender
         Dim gRow As GridViewRow = cmdBtn.NamingContainer
         Dim intPK As Integer = GVCards.DataKeys(gRow.RowIndex).Item("ID")
@@ -80,6 +78,22 @@
         Dim gRow As GridViewRow = cmdView.NamingContainer
         Dim intPK As Integer = GVCards.DataKeys(gRow.RowIndex).Item("ID")
         Session("ScoreCard") = intPK
+
+        Dim rstCard As DataTable =
+            MyRst($"SELECT * FROM ScoreCards WHERE ID = {intPK}")
+
+        With rstCard.Rows(0)
+            If IsDBNull(.Item("TeamA")) Or IsDBNull(.Item("TeamB")) Then
+
+                Call MyToast2c(Page, cmdView.ClientID,
+                               "Enter Team A and B",
+                               "You must enter team A and team B<br/>before using scorecard",
+                               "6000")
+                Return
+
+            End If
+        End With
+
         Response.Redirect("~/TeamChoose")
 
 
@@ -112,6 +126,7 @@
 
         End If
         MyEdit.HideCancel = True
+
 
         MyEdit.PopEdit(cmdNew.ClientID)
 

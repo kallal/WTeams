@@ -15,6 +15,9 @@
         </div>
         <div style="clear:both"></div>
 
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
+
 
         <asp:GridView ID="GVCards" runat="server"
               AutoGenerateColumns="False" 
@@ -124,8 +127,8 @@
             OnMySaveTrigger="MyEdit_MySaveTrigger"
             OnMyDeleteTrigger="MyEdit_MyDeleteTrigger"
             />
-
-
+            </ContentTemplate>
+        </asp:UpdatePanel>
 
     </div>
 

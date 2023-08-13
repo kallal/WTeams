@@ -69,7 +69,6 @@
         .myshadow {border:solid;border-color:lightgray;border-width:.1em}
     </style>
 
-    <link href="/Fonts/font-awesome.css" rel="stylesheet" />
 
        <style>
      .dialogWithDropShadow
@@ -140,7 +139,7 @@
 
         <%: Styles.Render("~/Scripts/jquery-ui2.min.css") %>
         <%: Styles.Render("~/Scripts/jquery.toast.min.css") %>
-
+        <%: Styles.Render("~/Fonts/font-awesome.css") %>
 
 
         <asp:ScriptManager runat="server">
@@ -160,8 +159,8 @@
                 <asp:ScriptReference Name="WebFormsBundle" />
                 <%--Site Scripts--%>
 
-                <asp:ScriptReference Path="/Scripts/jquery-ui-1.13.2.min.js" runat="server"  />
-                <asp:ScriptReference Path="/Scripts/jquery.toast.min.js" runat="server" />
+                <asp:ScriptReference Path="~/Scripts/jquery-ui-1.13.2.min.js" runat="server"  />
+                <asp:ScriptReference Path="~/Scripts/jquery.toast.min.js" runat="server" />
 
             </Scripts>
 
@@ -185,6 +184,32 @@
         </nav>
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
+
+        <script>
+
+            function toastcall(c, h, t, d) {
+                // c = control pass to display mesage next to
+                // t = text in toast message to display
+                // d = time to show message)
+                 var cmd = $('#' + c);
+                 var mypos = cmd.position();
+                 mypos.left = cmd.offset().left
+                 mypos.top = cmd.offset().top   
+                $.toast({
+                    heading: h,
+                    text: t,
+                    icon: 'info',
+                    position: mypos,
+                    hideAfter: d,
+                    allowToastClose: false,
+                    loader: false,
+                    stack: 10,
+                    showHideTransition: 'slide'
+                });
+            }
+
+        </script>
+
     </form>
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>

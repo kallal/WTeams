@@ -9,7 +9,8 @@ Module General
 
     Public Function GetConStr() As String
 
-        Return My.Settings.DB
+        'Return My.Settings.DB
+        Return ConfigurationManager.ConnectionStrings("WTeams.My.MySettings.DB").ConnectionString
 
 
     End Function
@@ -359,6 +360,47 @@ Module General
         End Using
 
     End Sub
+
+    Public Function MySqlExecute(strSQL As String) As String
+        ' general "easey" run sql action query (update, insert etc)
+
+        Dim sError As String = ""
+        Using conn As New SqlConnection(GetConStr)
+            Using cmdSQL As New SqlCommand(strSQL, conn)
+                conn.Open()
+                Try
+                    cmdSQL.ExecuteNonQuery()
+                Catch ex As Exception
+                    sError = ex.Message
+                End Try
+            End Using
+        End Using
+
+        Return sError
+
+    End Function
+
+    Sub MyToast2c(my As Page, ctrlBeside As String, Heading As String,
+                strText As String,
+                Optional strDelay As String = "3000")
+
+        ' same as Mytoast, but a js function called toastcall() MUST be placed on the page
+        ' any master page will have this function
+        ' ctrlBesite - do NOT pass # - so Button1 you pass "Button1"
+
+        Dim strScipt As String =
+            "toastcall('@ctrlBeside','@Heading','@Text','@strDelay');"
+
+        strScipt = strScipt.Replace("@ctrlBeside", ctrlBeside)
+        strScipt = strScipt.Replace("@Heading", Heading)
+        strScipt = strScipt.Replace("@Text", strText)
+        strScipt = strScipt.Replace("@strDelay", strDelay)
+
+
+        ScriptManager.RegisterStartupScript(my, my.GetType(), "mytoast", strScipt, True)
+
+    End Sub
+
 
 
 End Module
