@@ -74,10 +74,14 @@ Public Class TeamChoose
             Dim rstA As DataTable = MyRstP(cmdSQL)
             GVA.DataSource = rstA
             GVA.DataBind()
-            Dim lblSub As Label = GVA.FooterRow.FindControl("SelTotalSum")
-            TeamATotal = rstA.Compute("Sum(SelTotal)", "")
-            Session("TeamATotal") = TeamATotal
-            lblSub.Text = String.Format("{0:c2}", TeamATotal)
+            Try
+                Dim lblSub As Label = GVA.FooterRow.FindControl("SelTotalSum")
+                TeamATotal = rstA.Compute("Sum(SelTotal)", "")
+                Session("TeamATotal") = TeamATotal
+                lblSub.Text = String.Format("{0:c2}", TeamATotal)
+            Catch ex As Exception
+
+            End Try
 
         End If
 
@@ -95,13 +99,14 @@ Public Class TeamChoose
             Dim rstB As DataTable = MyRstP(cmdSQL)
             GVB.DataSource = rstB
             GVB.DataBind()
-            Dim lblSub As Label = GVB.FooterRow.FindControl("SelTotalSum")
+            Try
+                Dim lblSub As Label = GVB.FooterRow.FindControl("SelTotalSum")
+                TeamBTotal = rstB.Compute("Sum(SelTotal)", "")
+                Session("TeamBTotal") = TeamBTotal
+                lblSub.Text = String.Format("{0:c2}", TeamBTotal)
+            Catch ex As Exception
 
-            TeamBTotal = rstB.Compute("Sum(SelTotal)", "")
-            Session("TeamBTotal") = TeamBTotal
-            lblSub.Text = String.Format("{0:c2}", TeamBTotal)
-
-            lblSub.Text = String.Format("{0:c2}", TeamBTotal, "")
+            End Try
         End If
 
         ' Grand total
