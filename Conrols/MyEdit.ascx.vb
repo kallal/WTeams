@@ -130,13 +130,12 @@
         Dim sJava As String = ""
 
         If HideCancel Then
-            sJava = $"var HideCancel2 = '1'"
+            sJava = "var HideCancel2 = '1';"
         Else
-            sJava = $"var HideCancel2 = '0'"
+            sJava = "var HideCancel2 = '0';"
         End If
-        ScriptManager.RegisterStartupScript(Page, Page.GetType, "myvar", sJava, True)
 
-        sJava = $"{Me.ID}ucPOP('{sButton}')"
+        sJava &= $"{Me.ID}ucPOP('{sButton}')"
         ScriptManager.RegisterStartupScript(Page, Page.GetType, "uEdit", sJava, True)
 
     End Sub

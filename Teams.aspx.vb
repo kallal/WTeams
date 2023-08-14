@@ -18,7 +18,8 @@
         lstDivision.DataBind()
 
 
-        GVTeams.DataSource = MyRst("SELECT * FROM vTeams ORDER BY Team ")
+        GVTeams.DataSource = MyRst("SELECT * FROM 
+                                    vTeams ORDER BY Team ")
         GVTeams.DataBind()
 
     End Sub

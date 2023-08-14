@@ -45,11 +45,12 @@
             Dim TeamName As String = MyRst($"SELECT * FROM Teams WHERE ID = {TeamID}").Rows(0)("Team")
             Me.myhead.InnerText = $"Score Cards for {TeamName}"
 
-            strSQL = $"select * from vScoreCards WHERE TeamA = {TeamID} OR TeamB = {TeamID} " &
-                      "ORDER BY EventDate, TeamAT"
+            strSQL = $"select * from vScoreCards WHERE TeamA = {TeamID} OR TeamB = {TeamID}
+                       ORDER BY EventDate, TeamAT"
 
         Else
-            strSQL = $"select * from vScoreCards ORDER BY EventDate, TeamAT"
+            strSQL = $"select * from vScoreCards 
+                       ORDER BY EventDate, TeamAT"
 
         End If
 

@@ -28,10 +28,6 @@
 
                 </div>
 
-        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-            <ContentTemplate>
-
-
 
         <div id="InfoArea" runat="server" style="float: left">
 
@@ -55,47 +51,46 @@
                         <tr style="">
                             <td><%# Eval("ID") %></td>
                             <td>
-                                <asp:CheckBox ID="s1" runat="server" Checked='<%# Bind("A") %>'
-                                    AutoPostBack="true" OnCheckedChanged="s1_CheckedChanged" /></td>
+                                <asp:CheckBox ID="s1" runat="server" Checked='<%# Bind("A") %>' /></td>
                             <td>
-                                <asp:CheckBox ID="s2" runat="server" Checked='<%# Bind("B") %>' AutoPostBack="true" OnCheckedChanged="s1_CheckedChanged" /></td>
+                                <asp:CheckBox ID="s2" runat="server" Checked='<%# Bind("B") %>'/></td>
                             <td>
-                                <asp:CheckBox ID="s3" runat="server" Checked='<%# Bind("C") %>' AutoPostBack="true" OnCheckedChanged="s1_CheckedChanged" /></td>
+                                <asp:CheckBox ID="s3" runat="server" Checked='<%# Bind("C") %>' /></td>
                             <td>
-                                <asp:CheckBox ID="s4" runat="server" Checked='<%# Bind("D") %>' AutoPostBack="true" OnCheckedChanged="s1_CheckedChanged" /></td>
+                                <asp:CheckBox ID="s4" runat="server" Checked='<%# Bind("D") %>' /></td>
                             <td>
-                                <asp:CheckBox ID="s5" runat="server" Checked='<%# Bind("E") %>' AutoPostBack="true" OnCheckedChanged="s1_CheckedChanged" /></td>
+                                <asp:CheckBox ID="s5" runat="server" Checked='<%# Bind("E") %>' /></td>
                             <td>
-                                <asp:CheckBox ID="s6" runat="server" Checked='<%# Bind("F") %>' AutoPostBack="true" OnCheckedChanged="s1_CheckedChanged" /></td>
+                                <asp:CheckBox ID="s6" runat="server" Checked='<%# Bind("F") %>' /></td>
                             <td>
-                                <asp:CheckBox ID="s7" runat="server" Checked='<%# Bind("G") %>' AutoPostBack="true" OnCheckedChanged="s1_CheckedChanged" /></td>
+                                <asp:CheckBox ID="s7" runat="server" Checked='<%# Bind("G") %>' /></td>
                             <td>
-                                <asp:CheckBox ID="s8" runat="server" Checked='<%# Bind("H") %>' AutoPostBack="true" OnCheckedChanged="s1_CheckedChanged" /></td>
+                                <asp:CheckBox ID="s8" runat="server" Checked='<%# Bind("H") %>' /></td>
                             <td>
-                                <asp:CheckBox ID="s9" runat="server" Checked='<%# Bind("K") %>' AutoPostBack="true" OnCheckedChanged="s1_CheckedChanged" /></td>
+                                <asp:CheckBox ID="s9" runat="server" Checked='<%# Bind("K") %>' /></td>
                             <td>
-                                <asp:CheckBox ID="s10" runat="server" Checked='<%# Bind("L") %>' AutoPostBack="true" OnCheckedChanged="s1_CheckedChanged" /></td>
+                                <asp:CheckBox ID="s10" runat="server" Checked='<%# Bind("L") %>' /></td>
                             <td>&nbsp;&nbsp;</td>
                             <td>
-                                <asp:CheckBox ID="s11" runat="server" Checked='<%# Bind("aa") %>' AutoPostBack="true" OnCheckedChanged="s1_CheckedChanged" /></td>
+                                <asp:CheckBox ID="s11" runat="server" Checked='<%# Bind("aa") %>' /></td>
                             <td>
-                                <asp:CheckBox ID="s12" runat="server" Checked='<%# Bind("bb") %>' AutoPostBack="true" OnCheckedChanged="s1_CheckedChanged" /></td>
+                                <asp:CheckBox ID="s12" runat="server" Checked='<%# Bind("bb") %>' /></td>
                             <td>
-                                <asp:CheckBox ID="s13" runat="server" Checked='<%# Bind("cc") %>' AutoPostBack="true" OnCheckedChanged="s1_CheckedChanged" /></td>
+                                <asp:CheckBox ID="s13" runat="server" Checked='<%# Bind("cc") %>' /></td>
                             <td>
-                                <asp:CheckBox ID="s14" runat="server" Checked='<%# Bind("dd") %>' AutoPostBack="true" OnCheckedChanged="s1_CheckedChanged" /></td>
+                                <asp:CheckBox ID="s14" runat="server" Checked='<%# Bind("dd") %>' /></td>
                             <td>
-                                <asp:CheckBox ID="s15" runat="server" Checked='<%# Bind("ee") %>' AutoPostBack="true" OnCheckedChanged="s1_CheckedChanged" /></td>
+                                <asp:CheckBox ID="s15" runat="server" Checked='<%# Bind("ee") %>' /></td>
                             <td>
-                                <asp:CheckBox ID="s16" runat="server" Checked='<%# Bind("ff") %>' AutoPostBack="true" OnCheckedChanged="s1_CheckedChanged" /></td>
+                                <asp:CheckBox ID="s16" runat="server" Checked='<%# Bind("ff") %>' /></td>
                             <td>
-                                <asp:CheckBox ID="s17" runat="server" Checked='<%# Bind("gg") %>' AutoPostBack="true" OnCheckedChanged="s1_CheckedChanged" /></td>
+                                <asp:CheckBox ID="s17" runat="server" Checked='<%# Bind("gg") %>' /></td>
                             <td>
-                                <asp:CheckBox ID="s18" runat="server" Checked='<%# Bind("hh") %>' AutoPostBack="true" OnCheckedChanged="s1_CheckedChanged" /></td>
+                                <asp:CheckBox ID="s18" runat="server" Checked='<%# Bind("hh") %>' /></td>
                             <td>
-                                <asp:CheckBox ID="s19" runat="server" Checked='<%# Bind("kk") %>' AutoPostBack="true" OnCheckedChanged="s1_CheckedChanged" /></td>
+                                <asp:CheckBox ID="s19" runat="server" Checked='<%# Bind("kk") %>' /></td>
                             <td>
-                                <asp:CheckBox ID="s20" runat="server" Checked='<%# Bind("ll") %>' AutoPostBack="true" OnCheckedChanged="s1_CheckedChanged" /></td>
+                                <asp:CheckBox ID="s20" runat="server" Checked='<%# Bind("ll") %>' /></td>
                         </tr>
                     </ItemTemplate>
 
@@ -244,10 +239,47 @@
 
         </div>
 
-            </ContentTemplate>
-        </asp:UpdatePanel>
-
     </div>
 
+    <script>
+        $(window).on('load', function () {
+            // code here on after page load
+
+            // add a on click event to every check box
+            var sListView = '<%= LstSel.ClientID %>'
+            var MyListView = $('[id^="' + sListView + '"')
+
+            var $MyCheckbox = MyListView.find("input:checkbox")
+
+            // alert("found = " + $MyCheckbox.length)
+            $MyCheckbox.each(function () {
+                $(this).attr('onClick', 'myckclick(this);')
+            })
+        })
+
+
+        function myckclick(btn) {
+            // this runs when check box clicked
+            var MyChecked = $(btn).is(':checked')
+            // call server side web method.
+            $.ajax({
+                type: "POST",
+                url: 'TeamChoose.aspx/MyCheckBox',
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({ ControlID : btn.id, Checked : MyChecked}),
+                success: function (data) {
+                    $.each(data.d, function (key, value) {
+                        // console.log(key + '->' + value)
+                        $(key).text(value)
+                    })
+                },
+                error: function (msg) {
+                    alert("Failed: " + msg.status + ": " + msg.statusText);
+                }
+            });
+        }
+
+    </script>
 
 </asp:Content>

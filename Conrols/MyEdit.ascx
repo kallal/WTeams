@@ -76,6 +76,7 @@
                 closeText: "",
                 title: ucTitle,
                 width: ucWidth,
+                appendTo: "form",
                 dialogClass: "dialogWithDropShadow",
                 buttons: [
                     {

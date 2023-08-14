@@ -327,7 +327,7 @@
     </Compile>
     <Compile Include="TeamChoose.aspx.vb">
       <DependentUpon>TeamChoose.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Teams.aspx.designer.vb">
       <DependentUpon>Teams.aspx</DependentUpon>

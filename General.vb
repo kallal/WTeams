@@ -401,6 +401,11 @@ Module General
 
     End Sub
 
+    Public Function fMoney(v As Decimal) As String
+
+        Return String.Format("{0:c2}", v)
+
+    End Function
 
 
 End Module

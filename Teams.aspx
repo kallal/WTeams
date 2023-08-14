@@ -16,10 +16,8 @@
             <h1>Teams</h1>
         </div>
         <div style="clear:both"></div>
-
-            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                <ContentTemplate>
-
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
 
         <asp:GridView ID="GVTeams" 
             runat="server" AutoGenerateColumns="False" 
@@ -67,7 +65,6 @@
             CssClass="btn myshadow"><span class="fa fa-plus-square fa-lg"></span>&nbsp;&nbsp;Add Team
         </asp:LinkButton>
 
-        </div>
 
         <br />
         <br />
@@ -124,10 +121,12 @@
             OnMyDeleteTrigger="MyEdit_MyDeleteTrigger"
             />
 
-                </ContentTemplate>
-            </asp:UpdatePanel>
 
-    </div>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+
+
+        </div>
  
 
 
