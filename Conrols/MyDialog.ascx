@@ -146,7 +146,7 @@
             else {
                 var tExisting = tBar.html();
                 tBar.html("")
-                var tHTML = "<div style=\"float:left;margin-right:10px;\"><img src='/Content/teams2s.png' id='myNewImage' width='32px' /></div>"
+                var tHTML = "<div style=\"float:left;margin-right:10px;\"><img src='<%= ResolveURL("~/Content/teams2s.png") %>' id='myNewImage' width='32px' /></div>"
                 tBar.prepend(tHTML);
                 tBar.append("<div style=\"float:left;margin-top:8px;color:#253B82;font-weight:bold\">" + tExisting + "</div>")
 

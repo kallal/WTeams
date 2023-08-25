@@ -7,7 +7,7 @@
 </style>
 <div id="ucDiv" runat="server" >
 
-    <div id="myrender" runat="server" style="width: 300px; height: 150px; border: solid 2px; display:none">
+    <div id="myrender" runat="server" style="width: 300px; height: 150px; border: solid 2px; display:normal">
         Title
         <br />
         <hr style="background-color: black; height: 1px" />
@@ -133,7 +133,7 @@
             var tBar = $(".ui-dialog-title")
             var tExisting = tBar.html();
             tBar.html("")
-            var tHTML = "<div style=\"float:left;margin-right:10px;\"><img src='/Content/teams2s.png' id='myNewImage' width='32px' /></div>"
+            var tHTML = "<div style=\"float:left;margin-right:10px;\"><img src='<%= ResolveUrl("~/Content/teams2s.png") %>' id='myNewImage' width='32px' /></div>"
             tBar.prepend(tHTML);
             tBar.append("<div style=\"float:left;margin-top:8px;color:#253B82;font-weight:bold\">" + tExisting + "</div>")
 
@@ -186,7 +186,7 @@
                     var vTitle2 = $(this).parent().find('.ui-dialog-titlebar')
                     var tExisting = vTitle2.html();
                     vTitle2.html("")
-                    var tHTML = "<div style=\"float:left;margin-right:10px;\"><img src='/Content/teams2s.png' id='myNewImage' width='32px' /></div>"
+                    var tHTML = "<div style=\"float:left;margin-right:10px;\"><img src='<%= ResolveUrl("~/Content/teams2s.png") %>' id='myNewImage' width='32px' /></div>"
                     vTitle2.prepend(tHTML);
                     var tHTML2 = "<div style=\"float:left;margin-top:8px;color:#253B82;font-weight:bold\">Delete Record</div>"
 

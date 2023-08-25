@@ -8,12 +8,12 @@
     <div style="padding:30px">
 
 
-        <div style="padding:10px;margin-left:30%;margin-right:30%">
+        <div style="margin-left:auto;margin-right:auto;max-width:80vh">
         <div style="float:left">
             <img src="Content/teams2s.png" />
         </div>
         <div style="float:left;margin-top:5px">
-            <h1>Teams</h1>
+            <h1 id="myhead1" runat="server">Teams</h1>
         </div>
         <div style="clear:both"></div>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -22,7 +22,7 @@
         <asp:GridView ID="GVTeams" 
             runat="server" AutoGenerateColumns="False" 
             CssClass="table table-hover"
-            DataKeyNames="ID" width=""
+            DataKeyNames="ID" 
             >
             <Columns>
                 <asp:BoundField DataField="Team" HeaderText="Team" ItemStyle-Width="12em"  />
@@ -115,7 +115,7 @@
         <uc1:MyEdit runat="server" ID="MyEdit" 
             PopDiv="myeditarea" 
             Position="Center"
-            Width="575px"
+            Width="42em"
             Title="Edit Team"
             OnMySaveTrigger="MyEdit_MySaveTrigger"
             OnMyDeleteTrigger="MyEdit_MyDeleteTrigger"

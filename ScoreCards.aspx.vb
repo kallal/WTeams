@@ -100,24 +100,18 @@
 
     End Sub
 
-    Protected Sub cmdNew_Click(sender As Object, e As EventArgs)
+    Protected Sub cmdNew_Click(sender As Object, e As EventArgs) Handles cmdNew.Click
 
         Dim cmdAdd As LinkButton = sender
         Dim rstData As DataTable = MyRst("SELECT * FROM ScoreCards WHERE ID = 0")
         Dim NewRow As DataRow = rstData.NewRow
         NewRow("User_ID") = CuserID
         NewRow("EventDate") = DateTime.Today
-        'NewRow("TeamA") = 0
-        'NewRow("TeamB") = 0
 
         rstData.Rows.Add(NewRow)
         General.WriteNewRecord(rstData) ' write reocrd to database, pk is now set
 
         Dim intPK As Integer = NewRow("ID")
-
-        'GVA.DataSource = rstRates
-        'GVA.DataBind()
-        'Session("rstRates") = rstRates
 
         MyEdit.MyTable = "ScoreCards"
         MyEdit.MyPk = intPK

@@ -5,7 +5,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div style="margin-left:20%; margin-right:20%">
+    <div style="padding:30px">
+
+    <div style="margin-left:auto;margin-right:auto;max-width:95vh">
 
         <div style="float:left">
             <img src="Content/teams2s.png" />
@@ -15,14 +17,14 @@
         </div>
         <div style="clear:both"></div>
 
-        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server" >
             <ContentTemplate>
 
 
         <asp:GridView ID="GVCards" runat="server"
               AutoGenerateColumns="False" 
             CssClass="table table-hover"
-            DataKeyNames="ID" width="100%"            
+            DataKeyNames="ID" 
             >
             <Columns>
                 <asp:BoundField DataField="TeamAT" HeaderText="Team A"           />
@@ -41,7 +43,7 @@
 
                  <asp:TemplateField HeaderText="Edit"  ItemStyle-HorizontalAlign="Left" >
                     <ItemTemplate>
-                        <asp:LinkButton ID="cmdView"
+                        <asp:LinkButton ID="cmdView" Width="3.4em"
                             ToolTip="Edit Score Card Information"
                             runat="server"
                             OnClick="cmdView_Click"
@@ -53,7 +55,7 @@
 
                 <asp:TemplateField HeaderText="Score Card" HeaderStyle-HorizontalAlign="Center" >
                     <ItemTemplate>
-                        <asp:LinkButton ID="cmdShowCard"
+                        <asp:LinkButton ID="cmdShowCard" Width="3.5em"
                             ToolTip="Pick card choices"
                             runat="server"
                             OnClick="cmdShowCard_Click"
@@ -122,7 +124,7 @@
             ID="MyEdit" 
             PopDiv="myeditarea" 
             Title="Edit Score Card" 
-            Width="30%" 
+            Width="40   em" 
             Position="Center"
             OnMySaveTrigger="MyEdit_MySaveTrigger"
             OnMyDeleteTrigger="MyEdit_MyDeleteTrigger"
@@ -133,6 +135,7 @@
     </div>
 
 
+    </div>
 
 
 </asp:Content>
